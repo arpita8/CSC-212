@@ -2,13 +2,12 @@
  *  A simple chatbot.
  *
  * @author  Zach Arthurs
- * @version January 28, 2013
+ * @version 30 Jan 2013
  */
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.Random;
-
 
 class  Conversation  {
 	public static void main(String[] args){
@@ -41,7 +40,6 @@ class  Conversation  {
 			} catch(Exception e) {
 				rounds = 0;
 			}
-			// System.out.println(rounds);
 			String[] conversation = new String [(rounds*2 + 2)];
 			String start = "Howdy, everypony!";
 			conversation[0] = start;
@@ -82,7 +80,7 @@ class  Conversation  {
 			}
 			String end = "Goodbye, everypony!";
 			conversation[rounds*2 + 1] = end;
-			System.out.println(conversation[rounds*2]);
+			System.out.println(conversation[rounds*2 + 1]);
 			System.out.println("\n\n\nTranscript");
 			for (int k = 0; k < conversation.length; k++) {
 				String typed = conversation[k];
