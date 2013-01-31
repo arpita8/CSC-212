@@ -22,13 +22,10 @@ class WidgetCanvas extends JComponent {
      */
     WidgetCanvas() {
 	widgets = new Widget[4];
-	widgets[0] = (Widget)new CircleWidget(310,20,5);
-	widgets[1] = (Widget)new CircleWidget(50,15,25);
-	widgets[2] = (Widget)new CircleWidget(320,120,40);
-	widgets[3] = (Widget)new CircleWidget(180,300,150);
-    widgets[4] = (Widget)new StarWidget(200,50);
-    widgets[5] = (Widget)new StarWidget(20,80);
-    widgets[6] = (Widget)new StarWidget(250,200);
+	widgets[0] = (Widget)new CircleWidget(100,120,40);
+	widgets[1] = (Widget)new CircleWidget(300,120,40);
+    widgets[2] = (Widget)new LineWidget(350,200,200,300);
+    widgets[3] = (Widget)new LineWidget(50,200,200,300);
     }
 
     /**
