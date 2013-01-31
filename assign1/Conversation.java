@@ -1,10 +1,3 @@
-// Questions for TA
-// 	- Is there any better way to do the HashTable?
-// 	- How do I change my password?
-// 	- How do I submit work?
-//  - typescript?
-	
-
 /**
  *  A simple chatbot.
  *
