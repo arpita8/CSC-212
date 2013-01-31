@@ -16,7 +16,6 @@ public class CircleWidget implements Widget {
     /** The radius of the circle */
     private int radius;
 
-    // modify below to account for the y coordinate below
     /** Takes initial values for the position and radius */
     public CircleWidget(int x0, int y0, int r0) {
 	x = x0;
@@ -34,7 +33,15 @@ public class CircleWidget implements Widget {
 	x = x0;
     }
 
-    // add accessor and manipulator for y coordinate here
+    /** Accessor for y coordinate */
+    public int getY() {
+	return y;
+    }
+
+    /** Manipulator for y coordinate */
+    public void setY (int y0) {
+	y = y0;
+    }
 
     /** Accessor for radius */
     public int getRadius() {
