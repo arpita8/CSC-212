@@ -1,3 +1,10 @@
+// Questions for TA
+// 	- Is there any better way to do the HashTable?
+// 	- How do I change my password?
+// 	- How do I submit work?
+//  - typescript?
+	
+
 /**
  *  A simple chatbot.
  *
@@ -12,13 +19,16 @@ import java.util.Scanner;
 
 class  Conversation  {
 	/** Random responses to user requests */
-	public static final String[] cannedlist = {"Who is best pony?", "How do you think we could make this 20 percent cooler?", "Wouldn't you agree that Friendship is Magic?", "Aren't the Cutie Mark Crusaders cute?", "What's your cutie mark? Sadly, I'm a blank flank.", "Would you like some cider from Sweet Apple Acres?", "I'm gonna love and tolerate till the end of time.", "I'd like to be a tree."};
+	private static final String[] cannedlist = {"Who is best pony?", "How do you think we could make this 20 percent cooler?", "Wouldn't you agree that Friendship is Magic?", "Aren't the Cutie Mark Crusaders cute?", "What's your cutie mark? Sadly, I'm a blank flank.", "Would you like some cider from Sweet Apple Acres?", "I'm gonna love and tolerate till the end of time.", "I'd like to be a tree."};
 	
 	/** Computes the length of the list of strings. */
-	public static final int num_canned = cannedlist.length;
+	private static final int num_canned = cannedlist.length;
 	
 	/** The string that starts the conversation */
-	public static final String start = "Howdy everypony!";
+	private static final String start = "Howdy everypony!";
+	
+	/** The string that ends the conversation */
+	private static final String end = "Goodbye, everypony!";
 	
 	/**
 	 *  Asks the user of the number of rounds of conversation that they wish to have.
@@ -38,8 +48,15 @@ class  Conversation  {
 			}
 		return rounds;
 	}
-			 
+	
+	/**
+	     *  Has a conversation with the user.
+	     *
+	     *  
+	     */		 
 	public static void main(String[] args){
+		
+		// This is a hashtable used later to translate mirror words.
 		Hashtable<String, String> mirrorwords = new Hashtable<String, String>();
 		mirrorwords.put("You", "I");
 		mirrorwords.put("you", "I");
@@ -53,19 +70,24 @@ class  Conversation  {
 		mirrorwords.put("your", "my");
 		mirrorwords.put("My", "Your");
 		mirrorwords.put("Your", "My");
+		mirrorwords.put("me", "you");
+		mirrorwords.put("you.", "me.");
+		mirrorwords.put("me.", "you.");
+		mirrorwords.put("me?", "you?");
+		mirrorwords.put("you?", "me?");
+		mirrorwords.put("me!", "you!");
+		mirrorwords.put("you!", "me!");
+		
 		int rounds = rounds();
 		String[] conversation = new String [(rounds*2 + 2)];
 		conversation[0] = start;
+		conversation[rounds*2 + 1] = end;
 		System.out.println(conversation[0]);
+		
 		for (int i = 1; i <= rounds*2; i += 2){
-			BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 			System.out.print(">");
-			String user = "foobar";
-			try { 
-				user = input.readLine();
-				} catch (Exception e) {
-					System.out.print("Error on input.");
-				}
+			Scanner input = new Scanner(System.in);
+			String user = input.next();
 			conversation[i] = user;
 			String delimiter = " ";
 			String[] userwords = user.split(delimiter);
@@ -91,8 +113,7 @@ class  Conversation  {
 					System.out.println(conversation[i+1]);
 				}
 		}
-		String end = "Goodbye, everypony!";
-		conversation[rounds*2 + 1] = end;
+		
 		System.out.println(conversation[rounds*2 + 1]);
 		System.out.println("\n\n\nTranscript");
 		for (int k = 0; k < conversation.length; k++) {
