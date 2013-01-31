@@ -1,0 +1,40 @@
+Script started on Wed Jan 30 20:58:31 2013
+[?1034hbash-3.2$ java ConversationEC
+How many rounds?
+a
+Error! That input is not valid.
+bash-3.2$ java ConversationEC
+How many rounds?
+5
+Howdy everypony!
+>Hi! How are you?
+ Hi? How am me?
+>I don't know. I was ak sking you.
+ you don't know? you was asking me?
+>Of Course
+What's your cutie mark? Sadly, I'm a blank flank.
+>I don't have one. :(
+ you don't have one? :(
+>Of course not! Can't     
+Aren't the Cutie Mark Crusaders cute?
+Goodbye, everypony!
+
+
+
+Transcript
+Howdy everypony!
+Hi! How are you?
+ Hi? How am me?
+I don't know. I was asking you.
+ you don't know? you was asking me?
+Of Course
+What's your cutie mark? Sadly, I'm a blank flank.
+I don't have one. :(
+ you don't have one? :(
+Of course not! 
+Aren't the Cutie Mark Crusaders cute?
+Goodbye, everypony!
+bash-3.2$ exit
+exit
+
+Script done on Wed Jan 30 20:59:56 2013
