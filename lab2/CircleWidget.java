@@ -18,8 +18,9 @@ public class CircleWidget implements Widget {
 
     // modify below to account for the y coordinate below
     /** Takes initial values for the position and radius */
-    public CircleWidget(int x0, int r0) {
+    public CircleWidget(int x0, int y0, int r0) {
 	x = x0;
+	y = y0;
 	radius = r0;
     }
 
