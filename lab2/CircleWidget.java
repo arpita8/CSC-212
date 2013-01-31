@@ -10,7 +10,8 @@ public class CircleWidget implements Widget {
     /** The x coordinate of the widget */
     private int x;
 
-    // add the y coordinate here
+    /** The y coordinate of the widget */
+	private int y;
 
     /** The radius of the circle */
     private int radius;
