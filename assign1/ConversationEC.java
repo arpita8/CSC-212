@@ -10,7 +10,7 @@ import java.util.Hashtable;
 import java.util.Random;
 import java.util.Scanner;
 
-class  Conversation  {
+class  ConversationEC  {
 	/** Random responses to user requests */
 	private static final String[] cannedlist = {"Who is best pony?", "How do you think we could make this 20 percent cooler?", "Wouldn't you agree that Friendship is Magic?", "Aren't the Cutie Mark Crusaders cute?", "What's your cutie mark? Sadly, I'm a blank flank.", "Would you like some cider from Sweet Apple Acres?", "I'm gonna love and tolerate till the end of time.", "I'd like to be a tree."};
 	
