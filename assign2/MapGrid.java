@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
  *  Makes a MapGrid to be stored.
  *  
  *  @author  Zach Arthurs and Maneka Puligandla 
- *  @version Wednesday, Feburary, 6, 2013
+ *  @version Wednesday, February 6, 2013
  */
 
 public class MapGrid {
