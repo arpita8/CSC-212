@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
  *  Allows the MapGrid to be viewed.
  *  
  *  @author  Zach Arthurs and Maneka Puligandla 
- *  @version Wednesday, Feburary, 6, 2013
+ *  @version Wednesday, February, 6, 2013
  */
 
 public class MapViewer {  // CHANGE THE CLASS NAME TO SOMETHING APPROPRIATE
@@ -94,7 +94,14 @@ public class MapViewer {  // CHANGE THE CLASS NAME TO SOMETHING APPROPRIATE
 	 * @params scale, offset, grid
 	 *
 	 */
-	public void paintComponent() {
+	public void paintComponent(Graphics g) {
+		for (int i = 0; i< grid.returnWidth(); i++){
+			for (int j = 0; j< grid.returnHeight(); j++){
+				Color squarecolor = grid.getColor(i, j);
+				g.setColor(squarecolor);
+				g.fillRect((int)offset.getX() + i*scale, (int)offset.getY() + j*scale, scale, scale);
+			}
+		}
 	}
 	
     /**
