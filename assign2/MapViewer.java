@@ -12,23 +12,24 @@ import java.lang.reflect.Field;
 public class MapViewer extends JComponent {  // CHANGE THE CLASS NAME TO SOMETHING APPROPRIATE
     
 	/** Stores MapGrid to be displayed. */
-	public static MapGrid grid;
+	public MapGrid grid;
 	
 	/** How big the width of the viewer area will be */
-	public static int viewerWidth;
+	public int viewerWidth;
 	
 	/** How big the height of the viewer area will be */
-	public static int viewerHeight;
+	public int viewerHeight;
 	
 	/** How big the map will be */
-	private static int scale;
+	private int scale;
 	
 	/** Location of the upper left hand corner of the map. */
-	private static Point offset;
-	 
+	private Point offset;
+
 	/** Constructs MapView with defualt location and scale. */
 	public MapViewer(MapGrid grid) {
-		offset.setLocation(0,0);
+		this.grid = grid;
+		offset = new Point(0,0);
 		scale = 10;
 		viewerWidth = scale*grid.returnWidth();
 		viewerHeight = scale*grid.returnHeight();
@@ -106,11 +107,5 @@ public class MapViewer extends JComponent {  // CHANGE THE CLASS NAME TO SOMETHI
 			}
 		}
 	}
-	
-    /**
-     *  DESCRIBE THE MAIN METHOD HERE
-     */    
-    public static void main(String[] args) {
-	// YOUR PROGRAM WILL BEGIN EXECUTION HERE
-    }
+
 }
