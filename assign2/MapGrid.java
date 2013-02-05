@@ -45,9 +45,6 @@ public class MapGrid {
     
     /**Changes color of i,jth square */
     public void changeColor(int i, int j, String colorName) {
-	//mapColors[i][j] = Color.getColor(colName); 
-	
-	//Color aColor   = (Color) Color.class.getField("white").get(null);
 	
 	Color color;
 	try {
@@ -55,7 +52,7 @@ public class MapGrid {
 	    color = (Color)field.get(null);
 	} catch (Exception e) {
 	    color = null;
-		System.out.println(colorName + " NOT FOUND!"); // If color string not defined in standard Color class 
+	    System.out.println(colorName + " NOT FOUND!"); // If color string not defined in standard Color class 
 	}
 	
 	mapColors[i][j]=color;
