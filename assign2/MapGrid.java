@@ -1,4 +1,5 @@
 import java.awt.*;
+import javax.swing.*; 
 import java.lang.reflect.Field;
 
 /**
@@ -53,7 +54,8 @@ public class MapGrid {
 	    Field field = Color.class.getField(colorName);
 	    color = (Color)field.get(null);
 	} catch (Exception e) {
-	    color = null; // If color string not defined in standard Color class 
+	    color = null;
+		System.out.println(colorName + " NOT FOUND!"); // If color string not defined in standard Color class 
 	}
 	
 	mapColors[i][j]=color;
