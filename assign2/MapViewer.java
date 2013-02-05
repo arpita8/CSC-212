@@ -1,14 +1,15 @@
 import java.awt.*;
+import javax.swing.*;
 import java.lang.reflect.Field;
 
 /**
  *  Allows the MapGrid to be viewed.
  *  
  *  @author  Zach Arthurs and Maneka Puligandla 
- *  @version Wednesday, February, 6, 2013
+ *  @version Wednesday, February 6, 2013
  */
 
-public class MapViewer {  // CHANGE THE CLASS NAME TO SOMETHING APPROPRIATE
+public class MapViewer extends JComponent {  // CHANGE THE CLASS NAME TO SOMETHING APPROPRIATE
     
 	/** Stores MapGrid to be displayed. */
 	public static MapGrid grid;
@@ -29,6 +30,8 @@ public class MapViewer {  // CHANGE THE CLASS NAME TO SOMETHING APPROPRIATE
 	public MapViewer(MapGrid grid) {
 		offset.setLocation(0,0);
 		scale = 10;
+		viewerWidth = scale*grid.returnWidth();
+		viewerHeight = scale*grid.returnHeight();
 	} 
 	
 	/** Accessor for grid */
