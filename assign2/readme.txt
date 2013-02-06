@@ -1,0 +1,7 @@
+Zach's Reflection
+I think the most valuable part of this assignmennt was realizing how annoying typing each pixel is. I really have a new appreciation for people who do pixel art, however, I doubt they do it this way. I feel as though I have mastered the simple techniques used to create this map. There was a small part that was a little fustrating. We got a bug with the null pointer exception, however, we were able to fix it. We were simply able to figure out the problem.  
+
+
+Maneka's Reflection
+This assignment was useful for reviewing creating classes in Java as well as familiarizing myself with Java's GUI capabilities. The most valuable part of the assignment was seeing how the the three files interacted, as it was not immediately clear upon reading the assignment description what exactly was going to go on. Something new in this assignment for me was using reflections to take in a string to set the color of a graphics object. For this purpose I adapted code from a previous course. \
+Overall, the assignment was not frustrating. The only mildly irritating event was a NullPointerException error we got upon running the MapApplication, but that was fairly easily solved by writing a very simple test program to systematically find where the null variable was coming from. This technique could certainly be applied to similar snafus in the future.}
