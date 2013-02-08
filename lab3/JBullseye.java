@@ -14,6 +14,9 @@ class JBullseye extends JComponent {
     /** The colors in the bullseye */
     private Color color[];
 
+	/** Keep track of first ring clicked */
+	public int ring = -1;
+
     /**
      *  Creates a JBullseye of specified size.
      *  The default color is black.
@@ -85,7 +88,7 @@ class JBullseye extends JComponent {
 	}
 	repaint();
     }
-
+	
     /**
      *  The component will look bad if it is sized smaller than this
      *
@@ -103,4 +106,40 @@ class JBullseye extends JComponent {
     public Dimension getPreferredSize() {
 	return new Dimension(diameter,diameter);
     }
+	
+    /**
+    *  Figure out which ring a particular point corresponds to.
+    *
+    * @param x,y  Coordinates of the point
+    * @returns Index of ring
+    */
+   public int ringID(int x, int y) {
+    int id;
+    int r = diameter/2;
+    int rp = (int)Math.sqrt((x-r)*(x-r)+(y-r)*(y-r));
+    if (rp <= r) {
+        id = (rp*color.length)/r;
+    } else {
+        id = color.length;
+    }
+    id = color.length-1-id;
+    return id;
+   }
+	
+   /**
+    *  Swaps two colors in the bullseye
+    *
+    * @param id1, id2  Indices of colors to swap
+    */
+   public void swapColors(int id1, int id2) {
+   	Color ctmp;
+    int nc = color.length;
+    if ((id1 >= 0)&&(id2 >= 0)&&(id1 < nc)&&(id2 < nc)) {
+        ctmp = color[id1];
+        color[id1] = color[id2];
+        color[id2] = ctmp;
+    }
+    repaint();
+   }
+   
 }  // end of JBullseye
