@@ -45,13 +45,13 @@ public class SampleGUI {
         bull = new JBullseye(50,c);
 	pane.add(bull);
 	JButton cycleButton = new JButton("Cycle");
-	pane.add(cycleButton);
+	pane.add(cycleButton, BorderLayout.NORTH);
 	JButton invertButton = new JButton("Invert");
-	pane.add(invertButton);
+	pane.add(invertButton, BorderLayout.SOUTH);
 	JButton startButton = new JButton("Start");
-	pane.add(startButton);
+	pane.add(startButton, BorderLayout.EAST);
 	JButton stopButton = new JButton("Stop");
-	pane.add(stopButton);
+	pane.add(stopButton, BorderLayout.WEST);
 	cycleButton.addActionListener(new CycleListener());
 	invertButton.addActionListener(new InvertListener());
 	timer = new Timer(TIMER_INTERVAL,new CycleListener());
@@ -108,6 +108,14 @@ public class SampleGUI {
 	    /** Click event handler prints a message with the event location */
 		public void mouseClicked(MouseEvent e) {
 		    System.out.println("Click event at ("+e.getX()+","+e.getY()+")");
+			if (bull.ring == -1) {
+				bull.ring = bull.ringID((int)e.getX(), (int)e.getY());
+				} else {
+				bull.swapColors(bull.ring, bull.ringID(
+					e.getX(), e.getY()
+						));
+				bull.ring = -1;
+			}
 		}
 
 	    /** Press event handler prints a message with the event location */

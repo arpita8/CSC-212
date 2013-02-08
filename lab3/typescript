@@ -1,0 +1,14 @@
+Script started on Thu Feb  7 23:58:16 2013
+[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/lab3]1;~/CSC 212/lab3[0m[27m[24m[J[01;31m➜ [01;32m [36mlab3 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Kscriptjava SampleGUIWrapper[17Dc *.java         [9D
+]2;javac *.java]1;javac[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/lab3]1;~/CSC 212/lab3[0m[27m[24m[J[01;31m➜ [01;32m [36mlab3 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Kjavac *.java[12Dscript      java SampleGUIWrapper
+]2;java SampleGUIWrapper]1;javaEnter event at (38,75)
+Exit event at (-5,92)
+Enter event at (4,83)
+Exit event at (101,56)
+Enter event at (22,94)
+Exit event at (-1,53)
+Enter event at (0,41)
+Exit event at (10,-1)
+[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/lab3]1;~/CSC 212/lab3[0m[27m[24m[J[01;31m➜ [01;32m [36mlab3 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Keexo it
+]2;exit]1;exit
+Script done on Thu Feb  7 23:58:33 2013
