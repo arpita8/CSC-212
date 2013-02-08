@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  *  Class that runs a sample GUI
  *
- *  @author Nicholas R. Howe
+ *  @author Not Nicholas R. Howe
  *  @version CSC 112, 15 February 2006
  */
 public class SampleGUI {
@@ -42,5 +42,29 @@ public class SampleGUI {
 	pane.add(cycleButton);
 	JButton invertButton = new JButton("Invert");
 	pane.add(invertButton);
+	cycleButton.addActionListener(new CycleListener());
+	invertButton.addActionListener(new InvertListener());
+	}
+	/** Event handler for Cycle button */
+    class CycleListener implements ActionListener {
+        /**
+         *  Cycles the colors when the button is pushed.
+         *
+         *  @param e  Holds information about the button-push event
+         */
+	    public void actionPerformed(ActionEvent e) {
+	        bull.cycle();  // note the reference to the enclosing class's private field
+	    }
+	}
+	/** Event handler for Invert button */
+    class InvertListener implements ActionListener {
+        /**
+         *  Inverts the colors when the button is pushed.
+         *
+         *  @param e  Holds information about the button-push event
+         */
+	    public void actionPerformed(ActionEvent e) {
+	        bull.invert();  // note the reference to the enclosing class's private field
+	    }
     }
 }
