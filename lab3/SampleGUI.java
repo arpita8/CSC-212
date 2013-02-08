@@ -15,6 +15,12 @@ public class SampleGUI {
     /** Constructor does nothing */
     public SampleGUI() {
     }
+	
+	/** Used for animation of the bullseye colors */
+	    private Timer timer;
+ 
+	/** Time between updates */
+	private static final int TIMER_INTERVAL = 500;
 
     public void createAndShowGUI() {
         // Make sure we have nice window decorations.
@@ -42,8 +48,13 @@ public class SampleGUI {
 	pane.add(cycleButton);
 	JButton invertButton = new JButton("Invert");
 	pane.add(invertButton);
+	JButton startButton = new JButton("Start");
+	pane.add(startButton);
+	JButton stopButton = new JButton("Stop");
+	pane.add(stopButton);
 	cycleButton.addActionListener(new CycleListener());
 	invertButton.addActionListener(new InvertListener());
+	timer = new Timer(TIMER_INTERVAL,new CycleListener());
 	}
 	/** Event handler for Cycle button */
     class CycleListener implements ActionListener {
@@ -65,6 +76,28 @@ public class SampleGUI {
          */
 	    public void actionPerformed(ActionEvent e) {
 	        bull.invert();  // note the reference to the enclosing class's private field
+	    }
+	}
+	/** Event handler for Start button */
+    class StartListener implements ActionListener {
+        /**
+         *  Starts the timer.
+         *
+         *  @param e  Holds information about the button-push event
+         */
+	    public void actionPerformed(ActionEvent e) {
+	        timer.start();  
+	    }
+	}
+	/** Event handler for Stop button */
+    class StopListener implements ActionListener {
+        /**
+         *  Stops the timer
+         *
+         *  @param e  Holds information about the button-push event
+         */
+	    public void actionPerformed(ActionEvent e) {
+	        timer.stop();  
 	    }
     }
 }
