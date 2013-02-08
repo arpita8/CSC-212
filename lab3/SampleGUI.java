@@ -55,6 +55,9 @@ public class SampleGUI {
 	cycleButton.addActionListener(new CycleListener());
 	invertButton.addActionListener(new InvertListener());
 	timer = new Timer(TIMER_INTERVAL,new CycleListener());
+	startButton.addActionListener(new StartListener());
+	stopButton.addActionListener(new StopListener());
+	bull.addMouseListener(new SampleMouseListener());
 	}
 	/** Event handler for Cycle button */
     class CycleListener implements ActionListener {
@@ -100,4 +103,31 @@ public class SampleGUI {
 	        timer.stop();  
 	    }
     }
+	/** Mouse event handlers */
+	private class SampleMouseListener extends MouseAdapter {
+	    /** Click event handler prints a message with the event location */
+		public void mouseClicked(MouseEvent e) {
+		    System.out.println("Click event at ("+e.getX()+","+e.getY()+")");
+		}
+
+	    /** Press event handler prints a message with the event location */
+		public void mousePressed(MouseEvent e) {
+		    System.out.println("Press event at ("+e.getX()+","+e.getY()+")");
+		}
+
+	    /** Release event handler prints a message with the event location */
+		public void mouseReleased(MouseEvent e) {
+		    System.out.println("Release event at ("+e.getX()+","+e.getY()+")");
+		}
+
+	    /** Enter event handler prints a message with the event location */
+		public void mouseEntered(MouseEvent e) {
+		    System.out.println("Enter event at ("+e.getX()+","+e.getY()+")");
+		}
+
+	    /** Exit event handler prints a message with the event location */
+		public void mouseExited(MouseEvent e) {
+		    System.out.println("Exit event at ("+e.getX()+","+e.getY()+")");
+		}
+	}
 }
