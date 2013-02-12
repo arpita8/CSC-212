@@ -74,4 +74,57 @@ public class MapGUI {
 			view.changeOffset(newOffset);
 	    }
 	}
+	class SouthListener implements ActionListener {
+        /**
+         *  Moves the map South
+         *
+         *  @param e  Holds information about the button-push event
+         */
+	    public void actionPerformed(ActionEvent e) {
+	        newOffset = new Point((int)view.offset.getX(), (int)view.offset.getY() + (int)0.3*(view.getViewerHeight()));
+			view.changeOffset(newOffset);
+	    }
+	}
+	class EastListener implements ActionListener {
+        /**
+         *  Moves the map East
+         *
+         *  @param e  Holds information about the button-push event
+         */
+	    public void actionPerformed(ActionEvent e) {
+	        newOffset = new Point((int)view.offset.getX() + (int)0.3*(view.getViewerWidth()), (int)view.offset.getY());
+			view.changeOffset(newOffset);
+	    }
+	}
+	class WestListener implements ActionListener {
+        /**
+         *  Moves the map West
+         *
+         *  @param e  Holds information about the button-push event
+         */
+	    public void actionPerformed(ActionEvent e) {
+	        newOffset = new Point((int)view.offset.getX() - (int)0.3*(view.getViewerWidth()), (int)view.offset.getY());
+			view.changeOffset(newOffset);
+	    }
+	}
+	class InListener implements ActionListener {
+        /**
+         *  Zooms the map in
+         *
+         *  @param e  Holds information about the button-push event
+         */
+	    public void actionPerformed(ActionEvent e) {
+	        view.changeScale(view.getScale()*3);
+	    }
+	}
+	class OutListener implements ActionListener {
+        /**
+         *  Zooms the map in
+         *
+         *  @param e  Holds information about the button-push event
+         */
+	    public void actionPerformed(ActionEvent e) {
+	        view.changeScale((int)(view.getScale()*0.3));
+	    }
+	}
 }
