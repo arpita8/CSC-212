@@ -62,7 +62,7 @@ public class MapViewer extends JComponent {  // CHANGE THE CLASS NAME TO SOMETHI
 	
 	/** Manipulator for viewerWidth */
 	public void changeViewerWidth(int newWidth) {
-		viewerWidth = newWidth;
+		viewerWidth = newWidth;	
 	}
 	
 	/** Manipulator for viewerHeight */
