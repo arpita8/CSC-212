@@ -77,7 +77,12 @@ public class CardPile extends LinkedList<Card> {
      *  @param mark  New card goes after this one
      */
     public void insertAfter(Card card, Card mark) {
-        // FILL IN
+         ListIterator<Card> position = listIterator(size());
+        while (position.hasPrevious()&&(position.previous()!=mark)) {
+            // keep going until we find our card
+        }
+	position.next();
+        position.add(card);  // add it
     }
 
     /**
@@ -95,7 +100,7 @@ public class CardPile extends LinkedList<Card> {
         // now move cards one at a time
         while (insert.size()>0) {
             position.add(insert.removeFirst());
-        }
+	}
     }
 
     /**
@@ -105,7 +110,16 @@ public class CardPile extends LinkedList<Card> {
      *  @param mark insert after this point
      */
     public void insertAfter(CardPile insert, Card mark) {
-        // FILL IN
+        ListIterator<Card> position = listIterator(size());
+        // empty loop to find the position to insert at
+        while (position.hasPrevious()&&(position.previous()!=mark)) {
+            // nothing to do here
+        }
+        // now move cards one at a time
+        while (insert.size()>0) {
+	    position.next();
+            position.add(insert.removeFirst());
+        }
     }
 
     /**
@@ -117,9 +131,27 @@ public class CardPile extends LinkedList<Card> {
      *  @return the suffix pile
      */
     public CardPile split(Card mark) {
-	// FILL IN -- return value below is temporary, for clean compile
-        return null;
-    }
+	CardPile suffix = new CardPile( 0, 0);
+	ListIterator<Card> position = listIterator(size());
+	suffix.addFirst(position.previous());
+	position.next();
+	while (position.hasPrevious()&&(position.previous()!=mark)) {
+	    //position.next();
+	    //Card cardMouse = position.previous();
+	    suffix.addFirst(position.previous());
+	    position.next();
+	    //this.remove();
+	   
+	}
+
+
+	for (Card c:suffix){
+	    this.remove(c);
+        }
+	return suffix;
+    } 
+
+    
 
     /**
      *  Appends the provided suffix onto this list.
