@@ -221,16 +221,19 @@ public class CardTable extends JComponent {
 		}
 		
 		/** Drags the cards across the screen */
+		int count = 0;
 		public void mouseDragged(MouseEvent e) {
-			if (movingPile == null) {	
-				if (cardUnderMouse == null) {
-					movingPile = new CardPile((int)firstX, (int)firstY);
-					movingPile.addAll(pileUnderMouse.split(pileUnderMouse.get(0)));
-				} else {
-					movingPile = new CardPile((int)firstX, (int)firstY);
-					movingPile.addAll(pileUnderMouse.split(cardUnderMouse));
-				}
-			}	
+			if (pileUnderMouse.size() != 0 | count == 0) {	
+				if (movingPile == null)	{
+					if (cardUnderMouse == null) {
+						movingPile = new CardPile((int)firstX, (int)firstY);
+						movingPile.addAll(pileUnderMouse.split(pileUnderMouse.get(0)));
+					} else {
+						movingPile = new CardPile((int)firstX, (int)firstY);
+						movingPile.addAll(pileUnderMouse.split(cardUnderMouse));
+					}
+					count += 1;
+				}	
 			double secondX = e.getX();
 			double secondY = e.getY();
 			double deltaX = secondX - firstX;
@@ -240,7 +243,7 @@ public class CardTable extends JComponent {
 			firstX = secondX;
 			firstY = secondY;
 			repaint();
-
+			}	
 		}
 		
 		/** Releases the cards into the correct location */
@@ -253,9 +256,11 @@ public class CardTable extends JComponent {
 				if (releasedCard == null){
 					releasedPile.addAll(movingPile);
 					movingPile = null;
+					count = 0;
 					} else {
 					releasedPile.insertAfter(movingPile, releasedCard);
 					movingPile = null;
+					count = 0;
 				}
 				repaint();
 			}
