@@ -116,7 +116,9 @@ public class CardPile extends LinkedList<Card> {
             // nothing to do here
         }
         // now move cards one at a time
-        while (insert.size()>0) {
+        position.next();
+		while (insert.size()>0) {
+			//position.next();
             position.add(insert.removeFirst());
         }
     }
