@@ -23,8 +23,8 @@ import java.awt.event.*;
  *    the pile should be inserted into some fixed pile according to
  *    where the mouse was released. 
  *  
- *  @author Nicholas R. Howe
- *  @version CSC 112, 8 February 2006
+ *  @author Zach Arthurs and Pratistha Bhattarai
+ *  @version CSC 212, 20 February 2013
  */
 public class CardTable extends JComponent {
     /** Gives the number of piles available */
@@ -50,42 +50,17 @@ public class CardTable extends JComponent {
 
     /** Initialize a table with a deck of cards in the first slot */
     public CardTable() {
-	//ClickListener cl = new ClickListener();
 	pile[0] = new CardPile(Card.newDeck(),2,2);
 	pile[1] = new CardPile(2,102);
 	pile[2] = new CardPile(2,202);
 	pile[3] = new CardPile(2,302);
 	pile[4] = new CardPile(2,402);
-	this.addMouseListener(new ClickListener());
-	this.addMouseMotionListener(new DraggedListener());
+	movingPile = null;
 	
-	// Flip over all the cards 
-	// ListIterator<Card> i;
-// 	for (i = pile[0].listIterator(); i.hasNext();){
-// 	    Card n = i.next();
-// 	    n.flipCard();
-// 	}
-	    
-
-        // Sample card movements. 
-        // Uncomment these one at a time to see what they do.
-	//pile[1].addLast(pile[0].removeLast());
-	//pile[1].addLast(pile[0].removeLast());
-	// pile[1].addLast(pile[0].removeLast());
-	// pile[1].addFirst(pile[0].removeFirst());
-
-        // Now add your card movements for stage 1 here.
-        
-
-        // Once you have written the split() method in CardPile 
-        // you can uncomment and test the line below.
-        pile[2].addAll(pile[0].split(pile[0].get(26)));
-
-        // Next try other uses of split.
-        // Then try out the various insert methods.
-        // You should test out all the methods of CardGame that move cards
-        // and make sure that they all work as intended.
-        // FILL IN
+	/** Add MouseListener and MouseMotionListener to GUI */
+	this.addMouseListener(new ClickListener());
+	this.addMouseListener(new DraggedListener());
+	this.addMouseMotionListener(new DraggedListener());
     }
 
     /**
@@ -199,49 +174,63 @@ public class CardTable extends JComponent {
 	return locatePile(x,y).locateCard(x,y);
     }
     
+	/** Event handler for mouse double click on game window */
     class ClickListener extends MouseAdapter {
-	
+		/** Flips over the cards */
 		public void mouseClicked(MouseEvent e)  {
-		    if (e.getClickCount() == 2) {
-			    pileUnderMouse = locatePile((int)e.getX(), (int)e.getY());
+			if (e.getClickCount() == 2) {
+				pileUnderMouse = locatePile((int)e.getX(), (int)e.getY());
 			    cardUnderMouse = locateCard((int)e.getX(), (int)e.getY());
 				ListIterator<Card> i;
-				i = pileUnderMouse.listIterator(pileUnderMouse.size());
-				Card n = i.previous();
-				n.flipCard();
-				System.out.println("clicked");
-				while (n != cardUnderMouse){
-				    System.out.println("In while loop!");
-					n = i.previous();
-				    n.flipCard();
-					repaint();
+			    i = pileUnderMouse.listIterator(pileUnderMouse.size());
+				if (cardUnderMouse != null) {
+					Card n = i.previous();
+					n.flipCard();
+				    while (n != cardUnderMouse){
+					    n = i.previous();
+						n.flipCard();
+					}
+				} else {
+					for (i = pileUnderMouse.listIterator(); i.hasNext();){
+						Card n = i.next();
+						n.flipCard();
+					}	
 				}
+			    repaint();
+			} else {
+				
 			}
 		}
-	     
-	}
+			    
+    }
 	
+	/** Event handler for dragging in game window */
 	class DraggedListener extends MouseAdapter {
 		/** starting mouse drag x coordinate */
 		private double firstX;
-		
+
 		/** starting mouse drag y coordinate */
 		private double firstY;
 		
+		/** Gets the location of first click and the pile and card under the mouse */
 		public void mousePressed(MouseEvent e) {
-		    pileUnderMouse = locatePile((int)e.getX(), (int)e.getY());
+			pileUnderMouse = locatePile((int)e.getX(), (int)e.getY());
 		    cardUnderMouse = locateCard((int)e.getX(), (int)e.getY());
 			firstX = e.getX();
 			firstY = e.getY();
-			if (cardUnderMouse == null) {
-				movingPile = pileUnderMouse;
-			} else {
-				movingPile = pileUnderMouse.split(cardUnderMouse);
-			}
 		}
+		
+		/** Drags the cards across the screen */
 		public void mouseDragged(MouseEvent e) {
-			System.out.println(movingPile.getX());
-			System.out.println(movingPile.getY());
+			if (movingPile == null) {	
+				if (cardUnderMouse == null) {
+					movingPile = new CardPile((int)firstX, (int)firstY);
+					movingPile.addAll(pileUnderMouse.split(pileUnderMouse.get(0)));
+				} else {
+					movingPile = new CardPile((int)firstX, (int)firstY);
+					movingPile.addAll(pileUnderMouse.split(cardUnderMouse));
+				}
+			}	
 			double secondX = e.getX();
 			double secondY = e.getY();
 			double deltaX = secondX - firstX;
@@ -253,18 +242,26 @@ public class CardTable extends JComponent {
 			repaint();
 
 		}
+		
+		/** Releases the cards into the correct location */
 		public void mouseReleased(MouseEvent e) {
 			double releasedX = e.getX();
 			double releasedY = e.getY();
 			CardPile releasedPile = locatePile((int)releasedX, (int)releasedY);
 			Card releasedCard = locateCard((int)releasedX, (int)releasedY);
-			if (releasedCard == null){
-				releasedPile.append(movingPile);
-				} else {
-				releasedPile.insertAfter(movingPile, releasedCard);	
+			if (movingPile != null) {	
+				if (releasedCard == null){
+					releasedPile.addAll(movingPile);
+					movingPile = null;
+					} else {
+					releasedPile.insertAfter(movingPile, releasedCard);
+					movingPile = null;
+				}
+				repaint();
 			}
 		}
-
 	}
 
-}  // end of CardTable
+}
+
+

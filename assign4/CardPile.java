@@ -5,8 +5,8 @@ import java.util.*;
  *  This class stores a collection of playing cards 
  *  in a linked list format.
  *
- *  @author Nicholas R. Howe
- *  @version CSC 112, 22 February 2006
+ *  @author Zach Arthurs and Pratistha Bhattarai
+ *  @version CSC 212, 20 February 2013
  */
 public class CardPile extends LinkedList<Card> {
     /** Location of the pile of cards on the table */
@@ -117,7 +117,6 @@ public class CardPile extends LinkedList<Card> {
         }
         // now move cards one at a time
         while (insert.size()>0) {
-	    position.next();
             position.add(insert.removeFirst());
         }
     }
@@ -131,25 +130,20 @@ public class CardPile extends LinkedList<Card> {
      *  @return the suffix pile
      */
     public CardPile split(Card mark) {
-	CardPile suffix = new CardPile( 0, 0);
-	ListIterator<Card> position = listIterator(size());
-	suffix.addFirst(position.previous());
-	position.next();
-	while (position.hasPrevious()&&(position.previous()!=mark)) {
-	    //position.next();
-	    //Card cardMouse = position.previous();
-	    suffix.addFirst(position.previous());
-	    position.next();
-	    //this.remove();
-	   
-	}
+		CardPile suffix = new CardPile( 0, 0);
+		ListIterator<Card> position = listIterator(size());
+		suffix.addFirst(position.previous());
+		position.next();
+		while (position.hasPrevious()&&(position.previous()!=mark)) {
+		    suffix.addFirst(position.previous());
+		    position.next();
 
-
-	for (Card c:suffix){
-	    this.remove(c);
-        }
-	return suffix;
-    } 
+		}
+		for (Card c:suffix){
+		    this.remove(c);
+	        }
+		return suffix;
+	} 
 
     
 

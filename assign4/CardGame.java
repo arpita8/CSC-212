@@ -5,8 +5,8 @@ import javax.swing.*;
  *  A simple Swing application that creates and displays a
  *  CardTable element.
  *
- *  @author Nicholas R. Howe
- *  @version CSC 112, 22 February 2006
+ *  @author Zach Arthurs and Pratistha Bhattarai
+ *  @version CSC 212, 20 February 2013
  */
 public class CardGame extends JApplet {
     /** card table object */

@@ -3,8 +3,8 @@ import java.awt.*;
 /**
  *  This class stores information about a specific card.
  *
- *  @author Nicholas R. Howe
- *  @version CSC 112, Sept. 2009
+ *  @author Zach Arthurs and Pratistha Bhattarai
+ *  @version CSC 212, 20 February 2013
  */
 public class Card implements Comparable<Card> {
     /** Prototype of card -- ranks, suit, appearance */
