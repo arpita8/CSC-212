@@ -21,39 +21,48 @@ public class CardMergeSort {
       	// make a list of singleton lists
 		LinkedList<CardPile> piles = new LinkedList<CardPile>();
 		ListIterator<Card> position;
-		for (position = unsorted.listIterator(unsorted.size()); position.hasPrevious(); ) {
-			Card n = position.previous();
-			piles.add(unsorted.split(n));
+		position = unsorted.listIterator();
+		while (position.hasNext()) {
+			CardPile pile = new CardPile(0,0);
+			pile.add(unsorted.remove());
+			piles.add(pile);
 		}
 		// merges the piles while preserving sorted order
 		while (piles.size() > 1) {
         	CardPile pile1 = piles.removeFirst();
 			CardPile pile2 = piles.removeFirst();
-			CardPile merged = null;
-			ListIterator<Card> position1;
-			ListIterator<Card> position2;
-			position1 = pile1.listIterator();
-			position2 = pile2.listIterator();
+			CardPile merged = new CardPile(0,0);
 			while (pile1.size() > 0 && pile2.size() > 0) {
 				Card card1 = pile1.getFirst();
 				Card card2 = pile2.getFirst();
 				if (card1.compareTo(card2) > 0) {
+					System.out.println("merged is "+merged);
+					System.out.println("pile1 is"+pile1);
 					merged.addLast(pile1.removeFirst());
-				} else {
+					} else {
+					System.out.println("merged is "+merged);
+					System.out.println("pile2 is"+pile2);
 					merged.addLast(pile2.removeFirst());	
 				}
 			}
-			// added the merged list
-			piles.addLast(merged);
-			
+			if (pile1.size() > 0 && pile2.size() == 0) {
+				merged.append(pile1);
+				piles.addLast(merged);
+				} else if (pile1.size() == 0 && pile2.size() > 0) {
+				merged.append(pile2);
+				piles.addLast(merged);
+				} else {
+				piles.addLast(merged);
+			}
 			
 	        // register the new state with the recorder
 	        record.next();
-	        record.add(merged);
+	        for (CardPile pile: piles) {
+	        	record.add(pile);
+	        }
 		}
-		
 		// add the remaining pile to newpile
-		newpile.addAll(piles.removeFirst());
+		newpile.append(piles.removeFirst());
 		
         // return the (un)sorted result here
         return newpile;
