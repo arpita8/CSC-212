@@ -22,20 +22,11 @@ public class CardInSort {
         CardPile newpile = new CardPile(2,2);
         newpile.add(unsorted.removeFirst());
 		while (unsorted.size() > 0) {
-            System.out.println("I'm in the while loop!");
-			ListIterator<Card> position;
-			for (position = newpile.listIterator(); position.hasNext(); ) {
-				System.out.println("I'm in the for loop!");
-				Card card = unsorted.getFirst();
-				System.out.println(card);
-				Card newcard = position.next();
-				System.out.println(newcard);
-				if (card.compareTo(newcard) >= 0) {
-					newpile.add(unsorted.removeFirst());
-				} else if (position.hasNext() == false) {
-					newpile.add(unsorted.removeFirst());
-				}
+			ListIterator<Card> position = newpile.listIterator(newpile.size());
+			while (position.hasPrevious() && unsorted.getFirst().compareTo(position.previous()) >= 0) {
 			}
+			position.next();
+			position.add(unsorted.removeFirst());
 
             // register the new state with the recorder
             record.next();
