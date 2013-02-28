@@ -1,1 +1,91 @@
 Script started on Thu Feb 28 10:50:24 2013
+[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/lab5]1;~/CSC 212/lab5[0m[27m[24m[J[01;31m➜ [01;32m [36mlab5 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Kjjavac *.java
+]2;javac *.java]1;javac[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/lab5]1;~/CSC 212/lab5[0m[27m[24m[J[01;31m➜ [01;32m [36mlab5 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Kjjavac S
+[J[0mSampleJDB.java  [JStackOdds.java[J[A[0m[27m[24m[23Cjavac S[KampleJDB.java -g
+[J]2;javac SampleJDB.java -g]1;javac[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/lab5]1;~/CSC 212/lab5[0m[27m[24m[J[01;31m➜ [01;32m [36mlab5 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Kjjdb
+]2;jdb]1;jdbInitializing jdb ...
+> stop in SampleJDB.otte    lottery()
+Deferring breakpoint SampleJDB.lottery().
+It will be set after the class is loaded.
+> stop at SampleJDB:13
+Deferring breakpoint SampleJDB:13.
+It will be set after the class is loaded.
+> watch access SampleJDB.number
+Deferring watch accesses of SampleJDB.number.
+It will be set after the class is loaded.
+> run SampleJDB
+run  SampleJDB
+Set uncaught java.lang.Throwable
+Set deferred uncaught java.lang.Throwable
+> 
+VM Started: Set deferred watch accesses of SampleJDB.number
+Set deferred breakpoint SampleJDB:13
+Set deferred breakpoint SampleJDB.lottery()
+
+Breakpoint hit: "thread=main", SampleJDB.factorial(), line=13 bci=0
+13    		if (n <= 1) {
+
+main[1] print n
+ n = 6
+main[1] cont
+> 
+Breakpoint hit: "thread=main", SampleJDB.factorial(), line=13 bci=0
+13    		if (n <= 1) {
+
+main[1] print n
+ n = 5
+main[1] clear SampleJDB:13
+Removed: breakpoint SampleJDB:13
+main[1] stop at SampleJDB:14
+Set breakpoint SampleJDB:14
+main[1] cont
+> 
+Breakpoint hit: "thread=main", SampleJDB.factorial(), line=14 bci=5
+14    		    return 1;
+
+main[1] where
+  [1] SampleJDB.factorial (SampleJDB.java:14)
+  [2] SampleJDB.factorial (SampleJDB.java:16)
+  [3] SampleJDB.factorial (SampleJDB.java:16)
+  [4] SampleJDB.factorial (SampleJDB.java:16)
+  [5] SampleJDB.factorial (SampleJDB.java:16)
+  [6] SampleJDB.factorial (SampleJDB.java:16)
+  [7] SampleJDB.main (SampleJDB.java:31)
+main[1] print n
+ n = 1
+main[1] up
+main[2] print n
+ n = 2
+main[2] up
+main[3] print n
+ n = 3
+main[3] cont
+> 
+Field (SampleJDB.number) access encountered: "thread=main", SampleJDB.main(), line=34 bci=39
+34    		    if (i == number) {
+
+main[1] print SampleJDB.number
+ SampleJDB.number = 480
+main[1] pr  step
+> 
+Step completed: "thread=main", SampleJDB.main(), line=33 bci=48
+33    		for (int i = 0; i < 1000; i++) {
+
+main[1] print SampleJDB.number
+ SampleJDB.number = 480
+main[1] step
+> 
+Step completed: "thread=main", SampleJDB.main(), line=34 bci=37
+34    		    if (i == number) {
+
+main[1] step
+> 
+Field (SampleJDB.number) access encountered: "thread=main", SampleJDB.main(), line=34 bci=39
+34    		    if (i == number) {
+
+main[1] cont
+> 
+Step completed: "thread=main", SampleJDB.main(), line=33 bci=48
+33    		for (int i = 0; i < 1000; i++) {
+
+main[1] 
