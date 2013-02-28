@@ -88,4 +88,19 @@ main[1] cont
 Step completed: "thread=main", SampleJDB.main(), line=33 bci=48
 33    		for (int i = 0; i < 1000; i++) {
 
-main[1] 
+main[1] up
+End of stack.
+main[1] prn int l all locas ls
+com.sun.tools.example.debug.expr.ParseException: Name unknown: all
+ all locals = null
+main[1] print locals
+com.sun.tools.example.debug.expr.ParseException: Name unknown: locals
+ locals = null
+main[1] cont
+> 
+Field (SampleJDB.number) access encountered: "thread=main", SampleJDB.main(), line=34 bci=39
+34    		    if (i == number) {
+
+main[1] exit
+Congratulations!  You have won our lottery!
+[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/lab5]1;~/CSC 212/lab5[0m[27m[24m[J[01;31m➜ [01;32m [36mlab5 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[K
