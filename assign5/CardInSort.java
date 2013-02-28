@@ -22,10 +22,10 @@ public class CardInSort {
         CardPile newpile = new CardPile(2,2);
         newpile.add(unsorted.removeFirst());
 		while (unsorted.size() > 0) {
-			ListIterator<Card> position = newpile.listIterator(newpile.size());
-			while (position.hasPrevious() && unsorted.getFirst().compareTo(position.previous()) >= 0) {
+			ListIterator<Card> position = newpile.listIterator();
+			while (position.hasNext() && unsorted.getFirst().compareTo(position.next()) <= 0) {
 			}
-			position.next();
+			position.previous();
 			position.add(unsorted.removeFirst());
 
             // register the new state with the recorder
@@ -33,7 +33,17 @@ public class CardInSort {
             record.add(newpile);
             record.add(unsorted);
         }
-
+		ListIterator<Card> position = newpile.listIterator();
+		while (position.hasNext() && newpile.getLast().compareTo(position.next()) <= 0) {
+		}
+		position.previous();
+		position.add(newpile.getLast());
+		newpile.removeLast();
+		
+		record.next();
+		record.add(newpile);
+		record.add(unsorted);
+		
         // return the (un)sorted result here
         return newpile;
     }

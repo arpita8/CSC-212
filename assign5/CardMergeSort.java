@@ -36,12 +36,8 @@ public class CardMergeSort {
 				Card card1 = pile1.getFirst();
 				Card card2 = pile2.getFirst();
 				if (card1.compareTo(card2) > 0) {
-					System.out.println("merged is "+merged);
-					System.out.println("pile1 is"+pile1);
 					merged.addLast(pile1.removeFirst());
 					} else {
-					System.out.println("merged is "+merged);
-					System.out.println("pile2 is"+pile2);
 					merged.addLast(pile2.removeFirst());	
 				}
 			}
