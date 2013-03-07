@@ -1,0 +1,61 @@
+Script started on Wed Mar  6 23:01:19 2013
+j ^[[A^[[A^[[B^[[B[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/assign6]1;..C 212/assign6[0m[27m[24m[J[01;31m➜ [01;32m [36massign6 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Kscriptjava ValidateXHTML < test4.html[31Dscript                         [25D      scriptjava ValidateXHTML < test4.html.html [1C[1C[1C[1C
+]2;java ValidateXHTML < test.html]1;javaSkipped comment
+Pushed <html>
+Pushed <head>
+Pushed <title>
+Matched </title>
+Self-matched <meta>
+Matched </head>
+Pushed <body>
+Pushed <p>
+Matched </p>
+Pushed <applet>
+Matched </applet>
+Pushed <p>
+Matched </p>
+Matched </body>
+Matched </html>
+File validates!
+[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/assign6]1;..C 212/assign6[0m[27m[24m[J[01;31m➜ [01;32m [36massign6 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Kjava ValidateXHTML < test.html1.html[1C[1C[1C[1Chtml html 2html.html[1C[1C[1C
+]2;java ValidateXHTML < test2.html]1;javaSkipped comment
+Pushed <html>
+Skipped comment
+Pushed <title>
+Matched </title>
+Self-matched <meta>
+ERROR! <html> does not match </head>
+[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/assign6]1;..C 212/assign6[0m[27m[24m[J[01;31m➜ [01;32m [36massign6 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Kjava ValidateXHTML < test2.htmlhtml html 3html.html[1C[1C[1C
+]2;java ValidateXHTML < test3.html]1;javaSkipped comment
+Pushed <html>
+Pushed <head>
+Pushed <title>
+Matched </title>
+Self-matched <meta>
+Matched </head>
+Pushed <body>
+Pushed <p>
+Matched </p>
+Pushed <applet>
+Matched </applet>
+Pushed <p>
+Matched </p>
+Skipped comment
+ERROR! Not Matched: <body>
+ERROR! Not Matched: <html>
+[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/assign6]1;..C 212/assign6[0m[27m[24m[J[01;31m➜ [01;32m [36massign6 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Kjava ValidateXHTML < test3.html.html 4.html[1C[1C[1C[1C
+]2;java ValidateXHTML < test4.html]1;javaSkipped comment
+Pushed <html>
+Pushed <head>
+Pushed <title>
+Matched </title>
+Self-matched <meta>
+Matched </head>
+Pushed <body>
+Pushed <p>
+Matched </p>
+Pushed <applet>
+ERROR! No tag end.
+[1m[7m%[27m[1m[0m                                                                                ]2;admin@Zach-pew-pew-pew: ~/CSC 212/assign6]1;..C 212/assign6[0m[27m[24m[J[01;31m➜ [01;32m [36massign6 [01;34mgit:([31mmaster[34m) [33m✗[00m[00m[01;34m [00m[Keexit
+]2;exit]1;exit
+Script done on Wed Mar  6 23:03:20 2013
