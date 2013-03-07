@@ -1,0 +1,2 @@
+Zacharias Jace Arthurs - Reflection
+In this project, I learned that flow charts are useful when having complicated if/else if/while statements. However, I feel like there's probably an easier way to do this. I just don't know what it is. Also accounting for all situations is difficult when you don't really know what sorts of situations could arise and have little knowledge of what you are working with.
