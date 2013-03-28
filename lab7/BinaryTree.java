@@ -50,18 +50,18 @@ public class BinaryTree<E> {
     }
 
     /** Manipulator for node data */
-    public void setData(data) {  
-	this.data = tree.data;
+    public void setData(E data) {  
+	this.data = data;
     }
 
     /** Manipulator for left child */
-    public void setLeft(left) {  
-	this.left = tree.left;
+    public void setLeft(BinaryTree<E> left) {  
+	this.left = left;
     }
 
     /** Manipulator for right child */
-    public void setRight(right) { 
-	this.right = tree.right;
+    public void setRight(BinaryTree<E> right) { 
+	this.right = right;
     }
 
     /** Determines whether a tree is empty */
