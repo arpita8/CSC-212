@@ -17,7 +17,7 @@ public class Calculator {
      *
      * @params tree, binary tree of arthimatic 
      */
-    public void menu(Binary<Object> tree) {
+    public void menu(BinaryTree<Object> tree) {
         // Prints the menu for the user to choose
         System.out.println("Menu: ");
         System.out.println("1. Compute value.");

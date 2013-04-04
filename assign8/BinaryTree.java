@@ -35,18 +35,18 @@ public class BinaryTree<E> {
     }
 
     /** Accessor for node data */
-    public getData() {
-	return E data;
+    public E getData() {
+	return data;
     }
 
     /** Accessor for left child */
-    public getLeft() { 
-	return BinaryTree<E> left;
+    public BinaryTree<E> getLeft() { 
+	return left;
     }
 
     /** Accessor for right child */
-    public getRight() {  
-	return BinaryTree<E> right;
+    public BinaryTree<E> getRight() {  
+	return right;
     }
 
     /** Manipulator for node data */

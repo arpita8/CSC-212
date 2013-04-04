@@ -9,12 +9,6 @@ import java.lang.*;
  */
 
 public class AE_Tree extends BinaryTree<Object> {
-    // PUT CLASS FIELDS HERE (IF ANY), WITH JAVADOC FOR EACH
-
-    // PUT CONSTRUCTORS NEXT (IF ANY), WITH JAVADOC FOR EACH
-
-    // PUT CLASS METHODS NEXT (IF ANY), WITH JAVADOC FOR EACH
-
     /**
      * Turns a tree into post-fix notation
      *
@@ -23,9 +17,9 @@ public class AE_Tree extends BinaryTree<Object> {
      */
     public static String pfMaker(BinaryTree<Object> exprTree) {
             Stack<Object> pf = new Stack<Object>();
-            pf.push(tree.getData());
-            left = pfMaker(tree.getLeft());
-            right = pfMaker(tree.getRight());
+            pf.push(exprTree.getData());
+            Object left = pfMaker(exprTree.getLeft());
+            Object right = pfMaker(exprTree.getRight());
             pf.push(left);
             pf.push(right);
             String exprPF;
@@ -35,15 +29,15 @@ public class AE_Tree extends BinaryTree<Object> {
             return exprPF;
     }
 
-    /**
-     * Calculates an expression from a tree
-     *
-     * @param exprTree, expression in tree form
-     * @return ans, answer to the expression
-     */
-    public static double(BinaryTree<Object> exprTree) {
-        postfix = pfMaker(exprTree);
-    }
+    // /**
+    //  * Calculates an expression from a tree
+    //  *
+    //  * @param exprTree, expression in tree form
+    //  * @return ans, answer to the expression
+    //  */
+    // public static double(BinaryTree<Object> exprTree) {
+    //     postfix = pfMaker(exprTree);
+    // }
 
     /**
      * Finds matching parentesis
@@ -55,22 +49,22 @@ public class AE_Tree extends BinaryTree<Object> {
         StringTokenizer exprToken = new StringTokenizer(expr,"()+-*/",true);
         Stack<String> s = new Stack<String>();
         String paren;
-        while (exprToken.ttype != StringTokenizer.TT_EOL) {
-            if (exprToken.ttype == '(') {
+        while (exprToken.hasMoreTokens()) {
+            if (exprToken == '(') {
                 s.push("(");
                 exprToken.nextToken();
                 paren = paren + exprToken.sval;
-            } else if (exprToken.ttype == ')') {
+            } else if (exprToken == ')') {
                 s.pop();
                 if (s.empty()) {
-                    paren = paren + exprToken.sval;
+                    paren = paren + exprToken;
                     return paren;
                 } else {
-                    paren = paren + exprToken.sval;
+                    paren = paren + exprToken;
                     exprToken.nextToken();
                 }
             } else {
-                paren = paren + exprToken.sval;
+                paren = paren + exprToken;
                 exprToken.nextToken();
             }
         }
