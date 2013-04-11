@@ -72,24 +72,12 @@ public class DecisionTree extends BinaryTree<String> {
      */
      public static BinaryTree<String> createTree(File filename) {
         BufferedReader inputTree = new BufferedReader(new FileReader(filename));
-        String line = inputTree.readLine();
         BinaryTree<String> decTree;
-        decTree = BinaryTree(line);
+        String line = inputTree.readLine();
         while (true) {
             line = inputTree.readLine();
             String path = line.split(" ", 2)[0];
             String node = line.split(" ", 2)[1];
-            String pathString = path.substring(0, path.length() - 1);
-            Queue pathQueue = toQueue(pathString);
-            if (path.substring(path.length() -1, path.length()) == "Y") {
-                followPath(pathQueue, decTree).setLeft(node);
-            } else if (path.substring(path.length() - 1, path.length()) == "N") {
-                followPath(pathQueue, decTree).setRight(node);
-            } else {
-                System.out.println("Error. Only Y/N acceptable.");
-                System.exit(-1);
-            }
-
         }
      }
 }
