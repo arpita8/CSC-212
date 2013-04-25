@@ -1,0 +1,6 @@
+readme
+Zacharias J. Arthurs
+Final - Stage 1
+April 24, 2013
+
+The bug I am currently working on is a NullPointerException when addNode() is called. Any advice on this would be greatly appreciated. I chose to use ArrayList for anywhere that called for it. This is because they are easy to add to and easy to access data from. I am also currently having a slight problem of the fact that the representation of my nodes and edges are in the form: Graph$Node@110b205. I don't realy know what they are supposed to look like or how to reference them.
