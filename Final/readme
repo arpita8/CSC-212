@@ -1,6 +1,9 @@
 readme
 Zacharias J. Arthurs
 Final - Stage 1
-April 24, 2013
 
-The bug I am currently working on is a NullPointerException when addNode() is called. Any advice on this would be greatly appreciated. I chose to use ArrayList for anywhere that called for it. This is because they are easy to add to and easy to access data from. I am also currently having a slight problem of the fact that the representation of my nodes and edges are in the form: Graph$Node@110b205. I don't realy know what they are supposed to look like or how to reference them.
+For this stage of the final, I chose to do an undirected graph. My print command is not very clear and I probably could have done a better job at making it. I also could have added traversals, shortest path and other methods to the graph class.
+
+Final - Stage 2
+
+I had a lot of trouble with this. You have to click the upper left hand corner to do anything. The recordHead does not seem to reset after an edge is added or removed. I know I didn't use the input in my GUI. I feel as though my project is below the level of what I could've done. 
