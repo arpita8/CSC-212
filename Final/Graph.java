@@ -19,11 +19,22 @@ public class Graph<V, E> extends Object {
     // PUT CONSTRUCTORS NEXT (IF ANY), WITH JAVADOC FOR EACH
     /** Constructor intailizes with empty node and edge lists */
     public Graph() {
-
+      nodes = new ArrayList<Node>();
+      edges = new ArrayList<Edge>();
     }
 
 
     // PUT CLASS METHODS NEXT (IF ANY), WITH JAVADOC FOR EACH
+    /** Accessor for list of nodes */
+    public ArrayList<Node> getNodes() {
+      return nodes;
+    }
+
+    /** Accessor for list of edges */
+    public ArrayList<Edge> getEdges() {
+      return edges;
+    }
+
     /** Accessor for nodes */
     public Node getNode(int i) {
       return nodes.get(i);
@@ -31,7 +42,7 @@ public class Graph<V, E> extends Object {
 
     /** Accessor for edges */
     public Edge getEdge(int i) {
-      return edges.get(i);
+      return edges.get(i);  
     }
 
     /** Accessor for a specific edge */
@@ -65,11 +76,8 @@ public class Graph<V, E> extends Object {
      *@return node, the node to be added
      */
     public Node addNode(V data) {
-      System.out.println(data);
       Node node = new Node(data);
-      System.out.println(node);
       nodes.add(node);
-      System.out.println(nodes);
       return node;
     }
 
@@ -79,10 +87,11 @@ public class Graph<V, E> extends Object {
      * @param node, node to be removed
      */
     public void removeNode(Node node) {
-      for (Node neighbor: node.getNeighbors(node)) {
-        removeEdge(node.edgeTo(neighbor));
+      Edge edge;
+      while (node.getEdgeRefs().isEmpty() == false) {
+        edge = node.getEdgeRefs().get(0);
+        removeEdge(edge);
       }
-      for (Edge edge: node.edgeRef)
       nodes.remove(node);
     }
 
@@ -99,18 +108,26 @@ public class Graph<V, E> extends Object {
       edges.remove(edge);
     }
 
+    /**
+     * Removes an edge
+     *
+     * @params head, tail, nodes to define edge
+     */
+    public void removeEdge(Node head, Node tail) {
+      Edge edge = head.edgeTo(tail);
+      removeEdge(edge);
+    }
+
     /** 
      * Prints a represenation of the graph
      */
      public void print() {
       for (Edge edge: edges) {
         System.out.print(edge.getData());
-        System.out.print(edge.getHead());
-        System.out.print(edge.getTail());
       }
       for (Node node: nodes) {
-        if (node.getNeighbors(node) == null) {
-          System.out.println(node);
+        if (node.getNeighbors(node).isEmpty()) {
+          System.out.println(node.getData());
         }
       }
      } 
@@ -129,11 +146,22 @@ public class Graph<V, E> extends Object {
         /** Constructor that creates a disconnected node */
         public Node(V data) {
             this.data = data;
+            edgeRef = new ArrayList<Edge>();
         } 
 
         /** Acessor for data */
         public V getData() {
             return data;
+        }
+
+        /** Accessor for edgeRef */
+        public ArrayList<Edge> getEdgeRefs() {
+          return edgeRef;
+        }
+
+        /** Manipulator for data */
+        public void setData(V data) {
+            this.data = data;
         }
 
         /** 
@@ -162,12 +190,15 @@ public class Graph<V, E> extends Object {
           * @return neighbors, list of all the neighbors
           */
          public ArrayList<Node> getNeighbors(Node node) {
-          ArrayList<Node> neighbors = null;
+          ArrayList<Node> neighbors = new ArrayList<Node>();
           for (Edge edge: edgeRef) {
             if (edge.getHead() == node) {
               neighbors.add(edge.getTail());
+            } else if (edge.getTail() == node) {
+              neighbors.add(edge.getHead());
             }
           }
+
           return neighbors;
          }
 
@@ -179,11 +210,7 @@ public class Graph<V, E> extends Object {
           */
          public boolean isNeighbor(Node node) {
           ArrayList<Node> neighbors = getNeighbors(this);
-          if (neighbors.indexOf(node) == -1) {
-            return false;
-          } else {
-            return true;
-          }
+          return neighbors.contains(node);
          }
 
          /**
@@ -193,13 +220,14 @@ public class Graph<V, E> extends Object {
           * @return edge, the edge that connect the nodes
           */
           public Edge edgeTo(Node neighbor) {
-            if (this.isNeighbor(neighbor)) {
-              for (Edge edge: this.edgeRef) {
-                if (edge.getTail() == neighbor && edge.getHead() == this) {
-                  return edge;
-                } 
-              }
+            Edge test = new Edge(null, this, neighbor);
+            if (this.isNeighbor(neighbor) == false) {
               return null;
+            }
+            for (Edge edge: this.edgeRef) {
+              if (edge.equals(test)) {
+                return edge;
+              }
             }
             return null;
           }        
@@ -250,7 +278,13 @@ public class Graph<V, E> extends Object {
          * @param edge, to be compared to
          * @return  boolean of whether to edges are equal or not
          */
-         public boolean equals(Edge edge){
+         public boolean equals(Object o){
+            if (o.getClass().equals(Edge.class) == false) {
+              System.err.println("This needs to be an edge.");
+              System.exit(-1);
+            }
+            @SuppressWarnings("unchecked")
+            Edge edge = (Edge)o;
             Node head1 = this.head;
             Node tail1 = this.tail;
             Node head2 = edge.head;
